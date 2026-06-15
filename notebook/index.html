@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>notebook</title>
+    <script type="module" crossorigin src="./assets/index-awsLWRjZ.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-BPPi7vOr.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-BqBOg78p.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-DvoEXWke.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-BLUna9fQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Cl9k9ZmS.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-DzliDDTm.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-C8wT63Va.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-DCL4n9wx.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-Dz_KRrWq.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-DCUzRj2J.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-j3NGjqhR.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-BbCh-29a.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-eipL3i3Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-DcP01QzW.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BdyjRhEt.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-D5guW7EU.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-BH35Ndha.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-C-6liIBr.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-DZcFyKFQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DTV9tlSr.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-IPAtJGea.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-BUdrueMv.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CvI-39U6.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CP7vq682.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-e9lSomwA.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-CNldVcrP.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-DMpttj8Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-0B5NBztP.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-ClMcu_sV.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-DIwGYs0l.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-DieWOfXE.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-DfoVjkkH.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-CI2eq4XN.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DYDL-3-i.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-wdPMRf6Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-DRroIaBz.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-A_KhFcGV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-CI9qeK_X.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-D5zczhUD.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BrR4M-k3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-HlsDto3K.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CHcznzB-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B1U1kGCR.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-ChF5Ln9c.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CpTFpfm_.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CBSMxaO_.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CPczQFlJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C9ZB41s2.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-BGrE-q7N.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-B5A0DFEz.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-B9KxLTTS.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-BRGiG41H.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-DhnxH9Rh.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-kIkTfzTX.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-B0OX4z33.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BsaJrRWi.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DyYDV0HI.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-CTUAEnEx.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-DUF4IRRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BqFLkbUc.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-DzC_QCtT.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-7xZwVnnu.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-C3BAdHZE.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-CkFAAHXw.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-QkTujrKn.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-ByUv-u9o.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-DQ_tAz5W.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-C3Hrdlqq.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-B3Th7k4R.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-B1pHtGWp.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-CUuNtzHt.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-yTS3WpF4.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-CG5QYXYk.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-CR7cnzLX.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-D1JoyKTt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-BiCBGyeW.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-LK56fFow.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-BwrPA9zQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-OjtDb4gO.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-ChwPJgPd.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-DjDpJnbt.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-D-2KaAHK.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-Tv6ztuzw.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-lWUAsPhp.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-B0h5OVW9.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-Bhir8k53.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-BWL3Ct4n.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-q38vUCl-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-bgszE9F0.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-BEvXb3VX.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-BygYYKhs.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-D9iBG0F7.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-CU5Lbyax.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-KARR7KMq.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-zLmMOSA4.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-Bz_0Vkyf.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-vr57w7Ul.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DT8gf0PL.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-BGPSHfig.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CcI1zSdn.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-LdWZDbqd.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-b7Sf6DAK.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-Cb8rIK52.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-CklTTytn.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CTxr0EqQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-n3GaPJwv.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-BiFDv3jB.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-C59xfSYt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-ICIDGgHf.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-BNzu6e7h.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-CdN1NyAt.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-6NxtGaCm.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-KAhMaCIV.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-BTNxSavU.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-CWm2KnSx.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-BgB18UzY.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-rVklqqFF.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-CV8-hvjx.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-BJaeXQim.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-nqk474t8.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-uY_yJr5g.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-CPQR_o92.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-vertical-CkwWkOQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DHwG4Mac.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-BM_EJr3E.js">
+    <link rel="modulepreload" crossorigin href="./assets/components-BzBUxUz0.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-BPismotx.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-Ol38nIbL.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-DlVSuZ_1.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-BN9sAcQ0.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-DfWeGRFv.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-CqWdmSnV.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-D3_kHsDx.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-BrQspHac.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BrdxGLRX.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-DQHXdEQn.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-BiMOJy0r.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-BiU_sAcn.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-CPoJAfgx.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-7JnRMGd4.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-DMwTZOTH.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-Bgnx1kuY.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CxV9N1bc.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-BTTshiKq.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-xHqFtfdz.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-DwltG8V6.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-C-n2VFP5.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-BtBTvVVd.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-CcFk3m01.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-Bp18o6XG.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-zUHU--0D.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-W8WWuumF.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-FlZezxaf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-DZfwJMrG.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-CJjndqMI.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-DaaA-ptl.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-DGgq-Wes.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DiS_ryrS.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Dl4V1ub3.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DqWUNly1.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-CZN6vNxu.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-mGK3v0Mm.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-B5xWCt0a.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-D2p96PEF.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-DjhGJy4I.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BIw7BKLH.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.12\"\n# dependencies = [\n#     \"marimo\u003E=0.23.9\",\n# ]\n# [tool.marimo.runtime]\n# auto_instantiate = false\n# on_cell_change = \"lazy\"\n# requires-python = \"\u003E=3.12\"\n# dependencies = [\n#     \"marimo\u003E=0.23.9\",\n# ]\n# ///\n\nimport marimo\n\n__generated_with = \"0.23.9\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.cell\nasync def _():\n    import micropip\n    await micropip.install([\n        \"matplotlib\", \"numpy\", \"scipy\", \"pandas\", \"scikit-learn\", \"asciitree\"\n    ])\n\n\n    # pyiodide workarounds\n\n    ## numba doesn't work so wrap with identity decorator matching jit interface\n    import pathlib\n    import sysconfig\n\n    site_packages = pathlib.Path(sysconfig.get_paths()[\"purelib\"])\n    numba_dir = site_packages / \"numba\"\n    numba_dir.mkdir(exist_ok=True)\n    (numba_dir / \"__init__.py\").write_text(\"\"\"\n    def jit(fn=None, *args, **kwargs):\n        if fn is None:\n            return lambda f: f\n        return fn\n\n    njit = jit\n    prange = range\n    \"\"\")\n    dist_info = site_packages / \"numba-99.0.0.dist-info\"\n    dist_info.mkdir(exist_ok=True)\n    (dist_info / \"METADATA\").write_text(\"Name: numba\\nVersion: 99.0.0\\n\")\n\n\n    # SharedMemory immediately fails on import and is used a lot in SI\n    import itertools\n    import sys\n    import types\n\n    class FakeSharedMemory:\n        _counter = itertools.count()\n        _buffers = {}\n\n        def __init__(self, name=None, create=False, size=0):\n            if create:\n                self.name = name or f\"fake_shm_{next(self._counter)}\"\n                self._buffers[self.name] = bytearray(size)\n            else:\n                self.name = name\n\n            self.buf = memoryview(self._buffers[self.name])\n\n        def close(self):\n            pass\n\n        def unlink(self):\n            self._buffers.pop(self.name, None)\n\n    shared_memory = types.ModuleType(\"multiprocessing.shared_memory\")\n    shared_memory.SharedMemory = FakeSharedMemory\n    sys.modules[\"multiprocessing.shared_memory\"] = shared_memory\n\n\n\n    # requests e.g. when doing synthetic data gen have to go through pyiodide\n    # TODO: si.download_dataset doesn't work \n    import io\n    import urllib.request\n    from pyodide.http import open_url\n\n    class Response(io.BytesIO):\n        def getcode(self):\n            return 200\n\n        def info(self):\n            return {}\n\n    def urlopen(url, *args, **kwargs):\n        if hasattr(url, \"full_url\"):\n            url = url.full_url\n        return Response(open_url(str(url)).read().encode())\n\n    urllib.request.urlopen = urlopen\n\n\n\n    await micropip.install([\"spikeinterface==0.104.5\", \"pynapple\"])\n\n\n    # ProcessPoolExec.. imports multiprocessing \n    import concurrent.futures\n    import sys\n    import types\n\n    process = types.ModuleType(\"concurrent.futures.process\")\n    process.ProcessPoolExecutor = concurrent.futures.ThreadPoolExecutor\n    sys.modules[\"concurrent.futures.process\"] = process\n    concurrent.futures.ProcessPoolExecutor = concurrent.futures.ThreadPoolExecutor\n\n\n    # Avoid creating new threads (not possible to spawn w pyiodide)\n    import spikeinterface.full as si\n    si.set_global_job_kwargs(n_jobs=1)\n\n\n    # minor: detecting sorters relies on subprocess calls.\n    # not sure if all the sorters here work so should change the behaviour of this..\n    import spikeinterface.sorters.sorterlist as sorterlist\n    import spikeinterface.sorters as ss\n    import spikeinterface.full as si\n\n    def installed_sorters():\n        out = []\n        for sorter in sorterlist.sorter_full_list:\n            try:\n                if sorter.is_installed():\n                    out.append(sorter.sorter_name)\n            except Exception as e:\n                pass  # can make specific for [Errno 138] emscripten does not support processes.\n        return sorted(out)\n\n    sorterlist.installed_sorters = installed_sorters\n    ss.installed_sorters = installed_sorters\n    si.installed_sorters = installed_sorters\n    return si, ss\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Spikeinterface\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(si):\n    import matplotlib.pyplot as plt\n\n    _, recording, gt_sorting, extra_infos = si.generate_drifting_recording(\n        probe_name=\"Neuropixels1-128\",  # or use probe= instead to avoid the http call to probe library (https://probeinterface.readthedocs.io/en/main/)\n        num_units=10,\n        duration=10.0,\n        seed=2205,\n        extra_outputs=True,\n        generate_displacement_vector_kwargs=dict(\n            displacement_sampling_frequency=5.0,\n            drift_start_um=[0, 20],\n            drift_stop_um=[0, -20],\n            drift_step_um=1,\n            motion_list=[\n                dict(\n                    drift_mode=\"zigzag\",\n                    non_rigid_gradient=None,\n                    t_start_drift=0.0,\n                    t_end_drift=None,\n                    period_s=10.0,\n                ),\n            ],\n        ),\n    )\n\n    si.plot_traces(recording, channel_ids=recording.channel_ids[10:15], time_range=(0, 5.0))\n\n    plt.show()\n    return gt_sorting, plt, recording\n\n\n@app.cell\ndef _(recording, ss):\n    sorting = ss.run_sorter(\n        \"simple\",\n        recording,\n        remove_existing_folder=True,\n        clusterer=\"affinity_propagation\",  # default is hdbscan which is difficult to install\n    )\n\n    print(sorting)\n    return (sorting,)\n\n\n@app.cell\ndef _(recording, si, sorting):\n    sorting_analyzer = si.create_sorting_analyzer(\n        sorting=sorting,\n        recording=recording,\n        format=\"memory\",\n    )\n\n    sorting_analyzer.compute([\"random_spikes\", \"waveforms\", \"templates\"])\n    return (sorting_analyzer,)\n\n\n@app.cell\ndef _(plt, sorting_analyzer):\n    import spikeinterface.widgets as sw\n\n    sw.plot_unit_waveforms(sorting_analyzer, unit_ids=[0])\n    plt.show()\n    return (sw,)\n\n\n@app.cell\ndef _(gt_sorting, plt, sorting, sw):\n    import spikeinterface.comparison as sc\n\n    comp = sc.compare_sorter_to_ground_truth(gt_sorting, sorting)\n\n\n    sw.plot_confusion_matrix(comp)\n    plt.show()\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # pynapple\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    import pynapple as nap\n    import numpy as np\n\n    return nap, np\n\n\n@app.cell\ndef _(nap, np):\n    tsd = nap.Tsd(t=np.arange(100), d=np.random.rand(100))\n\n    print(tsd)\n    return\n\n\n@app.cell\ndef _(nap, np):\n    tsdframe = nap.TsdFrame(\n        t=np.arange(100), d=np.random.rand(100, 3), columns=[\"a\", \"b\", \"c\"]\n    )\n\n    print(tsdframe)\n    return\n\n\n@app.cell\ndef _(nap, np):\n    tsdtensor = nap.TsdTensor(\n        t=np.arange(100), d=np.random.rand(100, 3, 4)\n    )\n\n    print(tsdtensor)\n    return\n\n\n@app.cell\ndef _(nap, np):\n    # Feature\n    T = 500\n    dt_feature = 0.02\n    times_feature = np.arange(0, T, dt_feature)\n    feature = nap.Tsd(\n        t=times_feature, d=np.pi + np.pi * np.cos(2 * np.pi * times_feature / 10)\n    )\n\n    # Spikes\n    N = 6\n    max_rate = 20\n    dt_spikes = 0.002\n    feature_interp = feature.interpolate(nap.Ts(np.arange(0, T, dt_spikes)))\n    centers = np.linspace(0, 2 * np.pi, N, endpoint=False)\n    rates = max_rate * np.exp(\n        -10 * (np.sin((feature_interp.d[:, np.newaxis] - centers) / 2)) ** 2\n    )\n    tsgroup_1d = nap.TsGroup(\n        {\n            i + 1: nap.Ts(\n                feature_interp.t[np.random.poisson(rates[:, i] * dt_spikes) \u003E 0]\n            )\n            for i in range(N)\n        },\n    )\n    return feature, tsgroup_1d\n\n\n@app.cell\ndef _(feature, nap, np, tsgroup_1d):\n    tuning_curves_1d = nap.compute_tuning_curves(\n        data=tsgroup_1d,\n        features=feature,\n        bins=120, \n        range=(0, 2*np.pi),\n        feature_names=[\"feature\"]\n        )\n    tuning_curves_1d\n    return (tuning_curves_1d,)\n\n\n@app.cell\ndef _(plt, tuning_curves_1d):\n    tuning_curves_1d.name = \"firing rate\"\n    tuning_curves_1d.attrs[\"unit\"] = \"Hz\"\n    tuning_curves_1d.coords[\"feature\"].attrs[\"unit\"] = \"rad\"\n    tuning_curves_1d.plot.line(x=\"feature\", add_legend=False);\n    plt.show()\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.12%22%0A%23%20dependencies%20%3D%20%5B%0A%23%20%20%20%20%20%22marimo%3E%3D0.23.9%22%2C%0A%23%20%5D%0A%23%20%5Btool.marimo.runtime%5D%0A%23%20auto_instantiate%20%3D%20false%0A%23%20on_cell_change%20%3D%20%22lazy%22%0A%23%20requires-python%20%3D%20%22%3E%3D3.12%22%0A%23%20dependencies%20%3D%20%5B%0A%23%20%20%20%20%20%22marimo%3E%3D0.23.9%22%2C%0A%23%20%5D%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.23.9%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.cell%0Aasync%20def%20_()%3A%0A%20%20%20%20import%20micropip%0A%20%20%20%20await%20micropip.install(%5B%0A%20%20%20%20%20%20%20%20%22matplotlib%22%2C%20%22numpy%22%2C%20%22scipy%22%2C%20%22pandas%22%2C%20%22scikit-learn%22%2C%20%22asciitree%22%0A%20%20%20%20%5D)%0A%0A%0A%20%20%20%20%23%20pyiodide%20workarounds%0A%0A%20%20%20%20%23%23%20numba%20doesn't%20work%20so%20wrap%20with%20identity%20decorator%20matching%20jit%20interface%0A%20%20%20%20import%20pathlib%0A%20%20%20%20import%20sysconfig%0A%0A%20%20%20%20site_packages%20%3D%20pathlib.Path(sysconfig.get_paths()%5B%22purelib%22%5D)%0A%20%20%20%20numba_dir%20%3D%20site_packages%20%2F%20%22numba%22%0A%20%20%20%20numba_dir.mkdir(exist_ok%3DTrue)%0A%20%20%20%20(numba_dir%20%2F%20%22__init__.py%22).write_text(%22%22%22%0A%20%20%20%20def%20jit(fn%3DNone%2C%20*args%2C%20**kwargs)%3A%0A%20%20%20%20%20%20%20%20if%20fn%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20lambda%20f%3A%20f%0A%20%20%20%20%20%20%20%20return%20fn%0A%0A%20%20%20%20njit%20%3D%20jit%0A%20%20%20%20prange%20%3D%20range%0A%20%20%20%20%22%22%22)%0A%20%20%20%20dist_info%20%3D%20site_packages%20%2F%20%22numba-99.0.0.dist-info%22%0A%20%20%20%20dist_info.mkdir(exist_ok%3DTrue)%0A%20%20%20%20(dist_info%20%2F%20%22METADATA%22).write_text(%22Name%3A%20numba%5CnVersion%3A%2099.0.0%5Cn%22)%0A%0A%0A%20%20%20%20%23%20SharedMemory%20immediately%20fails%20on%20import%20and%20is%20used%20a%20lot%20in%20SI%0A%20%20%20%20import%20itertools%0A%20%20%20%20import%20sys%0A%20%20%20%20import%20types%0A%0A%20%20%20%20class%20FakeSharedMemory%3A%0A%20%20%20%20%20%20%20%20_counter%20%3D%20itertools.count()%0A%20%20%20%20%20%20%20%20_buffers%20%3D%20%7B%7D%0A%0A%20%20%20%20%20%20%20%20def%20__init__(self%2C%20name%3DNone%2C%20create%3DFalse%2C%20size%3D0)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20create%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20self.name%20%3D%20name%20or%20f%22fake_shm_%7Bnext(self._counter)%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20self._buffers%5Bself.name%5D%20%3D%20bytearray(size)%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20self.name%20%3D%20name%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20self.buf%20%3D%20memoryview(self._buffers%5Bself.name%5D)%0A%0A%20%20%20%20%20%20%20%20def%20close(self)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20pass%0A%0A%20%20%20%20%20%20%20%20def%20unlink(self)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20self._buffers.pop(self.name%2C%20None)%0A%0A%20%20%20%20shared_memory%20%3D%20types.ModuleType(%22multiprocessing.shared_memory%22)%0A%20%20%20%20shared_memory.SharedMemory%20%3D%20FakeSharedMemory%0A%20%20%20%20sys.modules%5B%22multiprocessing.shared_memory%22%5D%20%3D%20shared_memory%0A%0A%0A%0A%20%20%20%20%23%20requests%20e.g.%20when%20doing%20synthetic%20data%20gen%20have%20to%20go%20through%20pyiodide%0A%20%20%20%20%23%20TODO%3A%20si.download_dataset%20doesn't%20work%20%0A%20%20%20%20import%20io%0A%20%20%20%20import%20urllib.request%0A%20%20%20%20from%20pyodide.http%20import%20open_url%0A%0A%20%20%20%20class%20Response(io.BytesIO)%3A%0A%20%20%20%20%20%20%20%20def%20getcode(self)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20200%0A%0A%20%20%20%20%20%20%20%20def%20info(self)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20%7B%7D%0A%0A%20%20%20%20def%20urlopen(url%2C%20*args%2C%20**kwargs)%3A%0A%20%20%20%20%20%20%20%20if%20hasattr(url%2C%20%22full_url%22)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20url%20%3D%20url.full_url%0A%20%20%20%20%20%20%20%20return%20Response(open_url(str(url)).read().encode())%0A%0A%20%20%20%20urllib.request.urlopen%20%3D%20urlopen%0A%0A%0A%0A%20%20%20%20await%20micropip.install(%5B%22spikeinterface%3D%3D0.104.5%22%2C%20%22pynapple%22%5D)%0A%0A%0A%20%20%20%20%23%20ProcessPoolExec..%20imports%20multiprocessing%20%0A%20%20%20%20import%20concurrent.futures%0A%20%20%20%20import%20sys%0A%20%20%20%20import%20types%0A%0A%20%20%20%20process%20%3D%20types.ModuleType(%22concurrent.futures.process%22)%0A%20%20%20%20process.ProcessPoolExecutor%20%3D%20concurrent.futures.ThreadPoolExecutor%0A%20%20%20%20sys.modules%5B%22concurrent.futures.process%22%5D%20%3D%20process%0A%20%20%20%20concurrent.futures.ProcessPoolExecutor%20%3D%20concurrent.futures.ThreadPoolExecutor%0A%0A%0A%20%20%20%20%23%20Avoid%20creating%20new%20threads%20(not%20possible%20to%20spawn%20w%20pyiodide)%0A%20%20%20%20import%20spikeinterface.full%20as%20si%0A%20%20%20%20si.set_global_job_kwargs(n_jobs%3D1)%0A%0A%0A%20%20%20%20%23%20minor%3A%20detecting%20sorters%20relies%20on%20subprocess%20calls.%0A%20%20%20%20%23%20not%20sure%20if%20all%20the%20sorters%20here%20work%20so%20should%20change%20the%20behaviour%20of%20this..%0A%20%20%20%20import%20spikeinterface.sorters.sorterlist%20as%20sorterlist%0A%20%20%20%20import%20spikeinterface.sorters%20as%20ss%0A%20%20%20%20import%20spikeinterface.full%20as%20si%0A%0A%20%20%20%20def%20installed_sorters()%3A%0A%20%20%20%20%20%20%20%20out%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20sorter%20in%20sorterlist.sorter_full_list%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20sorter.is_installed()%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20out.append(sorter.sorter_name)%0A%20%20%20%20%20%20%20%20%20%20%20%20except%20Exception%20as%20e%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20pass%20%20%23%20can%20make%20specific%20for%20%5BErrno%20138%5D%20emscripten%20does%20not%20support%20processes.%0A%20%20%20%20%20%20%20%20return%20sorted(out)%0A%0A%20%20%20%20sorterlist.installed_sorters%20%3D%20installed_sorters%0A%20%20%20%20ss.installed_sorters%20%3D%20installed_sorters%0A%20%20%20%20si.installed_sorters%20%3D%20installed_sorters%0A%20%20%20%20return%20si%2C%20ss%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Spikeinterface%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(si)%3A%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%0A%20%20%20%20_%2C%20recording%2C%20gt_sorting%2C%20extra_infos%20%3D%20si.generate_drifting_recording(%0A%20%20%20%20%20%20%20%20probe_name%3D%22Neuropixels1-128%22%2C%20%20%23%20or%20use%20probe%3D%20instead%20to%20avoid%20the%20http%20call%20to%20probe%20library%20(https%3A%2F%2Fprobeinterface.readthedocs.io%2Fen%2Fmain%2F)%0A%20%20%20%20%20%20%20%20num_units%3D10%2C%0A%20%20%20%20%20%20%20%20duration%3D10.0%2C%0A%20%20%20%20%20%20%20%20seed%3D2205%2C%0A%20%20%20%20%20%20%20%20extra_outputs%3DTrue%2C%0A%20%20%20%20%20%20%20%20generate_displacement_vector_kwargs%3Ddict(%0A%20%20%20%20%20%20%20%20%20%20%20%20displacement_sampling_frequency%3D5.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20drift_start_um%3D%5B0%2C%2020%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20drift_stop_um%3D%5B0%2C%20-20%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20drift_step_um%3D1%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20motion_list%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20dict(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20drift_mode%3D%22zigzag%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20non_rigid_gradient%3DNone%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20t_start_drift%3D0.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20t_end_drift%3DNone%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20period_s%3D10.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20)%0A%0A%20%20%20%20si.plot_traces(recording%2C%20channel_ids%3Drecording.channel_ids%5B10%3A15%5D%2C%20time_range%3D(0%2C%205.0))%0A%0A%20%20%20%20plt.show()%0A%20%20%20%20return%20gt_sorting%2C%20plt%2C%20recording%0A%0A%0A%40app.cell%0Adef%20_(recording%2C%20ss)%3A%0A%20%20%20%20sorting%20%3D%20ss.run_sorter(%0A%20%20%20%20%20%20%20%20%22simple%22%2C%0A%20%20%20%20%20%20%20%20recording%2C%0A%20%20%20%20%20%20%20%20remove_existing_folder%3DTrue%2C%0A%20%20%20%20%20%20%20%20clusterer%3D%22affinity_propagation%22%2C%20%20%23%20default%20is%20hdbscan%20which%20is%20difficult%20to%20install%0A%20%20%20%20)%0A%0A%20%20%20%20print(sorting)%0A%20%20%20%20return%20(sorting%2C)%0A%0A%0A%40app.cell%0Adef%20_(recording%2C%20si%2C%20sorting)%3A%0A%20%20%20%20sorting_analyzer%20%3D%20si.create_sorting_analyzer(%0A%20%20%20%20%20%20%20%20sorting%3Dsorting%2C%0A%20%20%20%20%20%20%20%20recording%3Drecording%2C%0A%20%20%20%20%20%20%20%20format%3D%22memory%22%2C%0A%20%20%20%20)%0A%0A%20%20%20%20sorting_analyzer.compute(%5B%22random_spikes%22%2C%20%22waveforms%22%2C%20%22templates%22%5D)%0A%20%20%20%20return%20(sorting_analyzer%2C)%0A%0A%0A%40app.cell%0Adef%20_(plt%2C%20sorting_analyzer)%3A%0A%20%20%20%20import%20spikeinterface.widgets%20as%20sw%0A%0A%20%20%20%20sw.plot_unit_waveforms(sorting_analyzer%2C%20unit_ids%3D%5B0%5D)%0A%20%20%20%20plt.show()%0A%20%20%20%20return%20(sw%2C)%0A%0A%0A%40app.cell%0Adef%20_(gt_sorting%2C%20plt%2C%20sorting%2C%20sw)%3A%0A%20%20%20%20import%20spikeinterface.comparison%20as%20sc%0A%0A%20%20%20%20comp%20%3D%20sc.compare_sorter_to_ground_truth(gt_sorting%2C%20sorting)%0A%0A%0A%20%20%20%20sw.plot_confusion_matrix(comp)%0A%20%20%20%20plt.show()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20pynapple%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20pynapple%20as%20nap%0A%20%20%20%20import%20numpy%20as%20np%0A%0A%20%20%20%20return%20nap%2C%20np%0A%0A%0A%40app.cell%0Adef%20_(nap%2C%20np)%3A%0A%20%20%20%20tsd%20%3D%20nap.Tsd(t%3Dnp.arange(100)%2C%20d%3Dnp.random.rand(100))%0A%0A%20%20%20%20print(tsd)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(nap%2C%20np)%3A%0A%20%20%20%20tsdframe%20%3D%20nap.TsdFrame(%0A%20%20%20%20%20%20%20%20t%3Dnp.arange(100)%2C%20d%3Dnp.random.rand(100%2C%203)%2C%20columns%3D%5B%22a%22%2C%20%22b%22%2C%20%22c%22%5D%0A%20%20%20%20)%0A%0A%20%20%20%20print(tsdframe)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(nap%2C%20np)%3A%0A%20%20%20%20tsdtensor%20%3D%20nap.TsdTensor(%0A%20%20%20%20%20%20%20%20t%3Dnp.arange(100)%2C%20d%3Dnp.random.rand(100%2C%203%2C%204)%0A%20%20%20%20)%0A%0A%20%20%20%20print(tsdtensor)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(nap%2C%20np)%3A%0A%20%20%20%20%23%20Feature%0A%20%20%20%20T%20%3D%20500%0A%20%20%20%20dt_feature%20%3D%200.02%0A%20%20%20%20times_feature%20%3D%20np.arange(0%2C%20T%2C%20dt_feature)%0A%20%20%20%20feature%20%3D%20nap.Tsd(%0A%20%20%20%20%20%20%20%20t%3Dtimes_feature%2C%20d%3Dnp.pi%20%2B%20np.pi%20*%20np.cos(2%20*%20np.pi%20*%20times_feature%20%2F%2010)%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Spikes%0A%20%20%20%20N%20%3D%206%0A%20%20%20%20max_rate%20%3D%2020%0A%20%20%20%20dt_spikes%20%3D%200.002%0A%20%20%20%20feature_interp%20%3D%20feature.interpolate(nap.Ts(np.arange(0%2C%20T%2C%20dt_spikes)))%0A%20%20%20%20centers%20%3D%20np.linspace(0%2C%202%20*%20np.pi%2C%20N%2C%20endpoint%3DFalse)%0A%20%20%20%20rates%20%3D%20max_rate%20*%20np.exp(%0A%20%20%20%20%20%20%20%20-10%20*%20(np.sin((feature_interp.d%5B%3A%2C%20np.newaxis%5D%20-%20centers)%20%2F%202))%20**%202%0A%20%20%20%20)%0A%20%20%20%20tsgroup_1d%20%3D%20nap.TsGroup(%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20i%20%2B%201%3A%20nap.Ts(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20feature_interp.t%5Bnp.random.poisson(rates%5B%3A%2C%20i%5D%20*%20dt_spikes)%20%3E%200%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20i%20in%20range(N)%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20)%0A%20%20%20%20return%20feature%2C%20tsgroup_1d%0A%0A%0A%40app.cell%0Adef%20_(feature%2C%20nap%2C%20np%2C%20tsgroup_1d)%3A%0A%20%20%20%20tuning_curves_1d%20%3D%20nap.compute_tuning_curves(%0A%20%20%20%20%20%20%20%20data%3Dtsgroup_1d%2C%0A%20%20%20%20%20%20%20%20features%3Dfeature%2C%0A%20%20%20%20%20%20%20%20bins%3D120%2C%20%0A%20%20%20%20%20%20%20%20range%3D(0%2C%202*np.pi)%2C%0A%20%20%20%20%20%20%20%20feature_names%3D%5B%22feature%22%5D%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20tuning_curves_1d%0A%20%20%20%20return%20(tuning_curves_1d%2C)%0A%0A%0A%40app.cell%0Adef%20_(plt%2C%20tuning_curves_1d)%3A%0A%20%20%20%20tuning_curves_1d.name%20%3D%20%22firing%20rate%22%0A%20%20%20%20tuning_curves_1d.attrs%5B%22unit%22%5D%20%3D%20%22Hz%22%0A%20%20%20%20tuning_curves_1d.coords%5B%22feature%22%5D.attrs%5B%22unit%22%5D%20%3D%20%22rad%22%0A%20%20%20%20tuning_curves_1d.plot.line(x%3D%22feature%22%2C%20add_legend%3DFalse)%3B%0A%20%20%20%20plt.show()%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "edit",
+            "version": "0.23.9",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
